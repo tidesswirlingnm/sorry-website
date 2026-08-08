@@ -1,1 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>For my baccha ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      background: linear-gradient(135deg, #fff0f3, #ffe0e6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 30px 15px;
+    }
+
+    /* Floating hearts */
+
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      color: #d90429;
+      font-size: 25px;
+      animation: float 7s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart:nth-child(1) {
+      left: 8%;
+      animation-delay: 0s;
+    }
+
+    .heart:nth-child(2) {
+      left: 25%;
+      animation-delay: 2s;
+      font-size: 18px;
+    }
+
+    .heart:nth-child(3) {
+      left: 45%;
+      animation-delay: 4s;
+    }
+
+    .heart:nth-child(4) {
+      left: 68%;
+      animation-delay: 1s;
+      font-size: 20px;
+    }
+
+    .heart:nth-child(5) {
+      left: 88%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Envelope screen */
+
+    .intro {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro h1 {
+      color: #9d0208;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #6a1a2b;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .envelope {
+      font-size: 100px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .envelope:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    .open-text {
+      color: #b00020;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Letter */
+
+    .letter {
+      display: none;
+      position: relative;
+      z-index: 2;
+      width: 95%;
+      max-width: 700px;
+      background: #fffdf9;
+      padding: 45px 40px;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(120, 0, 20, 0.2);
+      border: 1px solid #f0b6c0;
+      animation: appear 1s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .top-heart {
+      text-align: center;
+      font-size: 45px;
+      animation: beat 1.3s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    .letter h1 {
+      text-align: center;
+      color: #9d0208;
+      font-size: 45px;
+      margin: 10px 0 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #b00020;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .message {
+      color: #43252b;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .message p {
+      margin-bottom: 20px;
+    }
+
+    .sorry {
+      text-align: center;
+      font-size: 23px;
+      color: #9d0208;
+      font-weight: bold;
+      margin: 25px 0;
+    }
+
+    .signature {
+      text-align: right;
+      color: #9d0208;
+      font-size: 20px;
+      margin-top: 30px;
+      font-style: italic;
+    }
+
+    .forgive {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    button {
+      background: #b00020;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #8d001a;
+      transform: scale(1.05);
+    }
+
+    #answer {
+      display: none;
+      margin-top: 20px;
+      color: #b00020;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .letter {
+        padding: 30px 22px;
+      }
+
+      .letter h1 {
+        font-size: 36px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating red hearts -->
+
+  <div class="heart">❤️</div>
+  <div class="heart">♥️</div>
+  <div class="heart">❤️</div>
+  <div class="heart">♥️</div>
+  <div class="heart">❤️</div>
+
+
+  <!-- Opening screen -->
+
+  <div class="intro" id="intro">
+
+    <h1>Hey Sonule… ❤️</h1>
+
+    <p>I made something for you.</p>
+
+    <div class="envelope" onclick="openLetter()">
+      💌
+    </div>
+
+    <div class="open-text">
+      Tap the letter to open it
+    </div>
+
+  </div>
+
+
+  <!-- Letter -->
+
+  <div class="letter" id="letter">
+
+    <div class="top-heart">❤️</div>
+
+    <h1>I'm Sorry</h1>
+
+    <div class="subtitle">
+      A little letter from me to you...
+    </div>
+
+    <div class="message">
+
+      <p>
+        Hey sonule… ❤️
+      </p>
+
+      <p>
+        Ik it’s my fault, and I’m genuinely sorry.
+        I know I kept asking you the same things again and again,
+        and maybe it got irritating, but yrr… I really want you
+        to understand where I was coming from.
+        It was making me feel really jealous and insecure. 🥺
+      </p>
+
+      <p>
+        So many people were telling me things, even Sejal asked me
+        about you, and honestly, it was really hard for me to handle
+        all of that. I started overthinking everything, and instead
+        of calmly talking to you, I kept asking you again and again.
+        I know that was stupid of me, and I’m sorry for making
+        things complicated.
+      </p>
+
+      <p>
+        I also know that it’s your life and your choice.
+        Teko kon chahiye, kis se baat karni hai, kya karna hai…
+        who am I to control that? I don't want to be that person.
+        I just got scared of losing the bond we have. ❤️
+      </p>
+
+      <p>
+        We've obviously had our ups and downs, fights,
+        misunderstandings, and stupid arguments, but honestly…
+        I don't wanna lose you. Not like this.
+        You mean way too much to me, and I really miss how things
+        used to be between us.
+      </p>
+
+      <p>
+        I don't expect everything to magically become okay in one
+        second. I just want us to talk, understand each other,
+        and slowly get our bond back.
+        I want the same comfort, the same stupid conversations,
+        the same laughing over random things, everything. 🥹❤️
+      </p>
+
+      <p>
+        Maybe I don't always know how to express myself properly,
+        and sometimes my insecurity comes out in the worst way
+        possible. But behind all of that, I genuinely care about
+        you so much.
+      </p>
+
+      <div class="sorry">
+        So yeah… I'm really, really sorry, sonule. ❤️
+      </div>
+
+      <p>
+        I love you soo muchhh, myyy baccha spideyyyy. 🥺🕷️❤️
+      </p>
+
+      <p>
+        Can we please find our way back to our bond?
+        <br>
+        I really don't wanna lose you. ❤️
+      </p>
+
+    </div>
+
+    <div class="signature">
+      — from someone who really cares about you ❤️
+    </div>
+
+    <div class="forgive">
+
+      <button onclick="showAnswer()">
+        Will you forgive me? ❤️
+      </button>
+
+      <div id="answer">
+        🥺❤️ Thank you for hearing me out.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function openLetter() {
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("letter").style.display = "block";
+    }
+
+    function showAnswer() {
+      document.getElementById("answer").style.display = "block";
+    }
+
+  </script>
+
+</body>
+</html>
